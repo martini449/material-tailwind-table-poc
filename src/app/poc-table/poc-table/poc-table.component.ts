@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {BehaviorSubject} from "rxjs";
 
 export interface TableShoppingCartElement {
@@ -54,7 +54,8 @@ const ELEMENT_DATA: TableShoppingCartElement[] = [
 @Component({
   selector: 'app-poc-table',
   templateUrl: './poc-table.component.html',
-  styleUrls: ['./poc-table.component.scss']
+  styleUrls: ['./poc-table.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 
 export class PocTableComponent {
