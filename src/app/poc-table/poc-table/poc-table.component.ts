@@ -51,6 +51,8 @@ const ELEMENT_DATA: TableShoppingCartElement[] = [
   ]
 ;
 
+const DISPLAYED_COLUMNS = ['part-number', 'part-description', 'quantity', 'line-reference', 'customer-price', 'select'];
+
 @Component({
   selector: 'app-poc-table',
   templateUrl: './poc-table.component.html',
@@ -59,9 +61,10 @@ const ELEMENT_DATA: TableShoppingCartElement[] = [
 })
 
 export class PocTableComponent {
-  displayedColumns: string[] = ['part-number', 'part-description', 'quantity', 'line-reference', 'customer-price', 'select'];
+  displayedColumns: string[] = DISPLAYED_COLUMNS;
   dataSource = new BehaviorSubject<TableShoppingCartElement[]>(ELEMENT_DATA);
   selectedRows: TableShoppingCartElement[] = [];
+  priceEnabled: boolean = false;
 
   toggleRowSelection(selectedRow: TableShoppingCartElement) {
     if (this.selectedRows.includes(selectedRow)) {
@@ -96,5 +99,14 @@ export class PocTableComponent {
       }
       return element;
     }))
+  }
+
+  togglePrice() {
+    this.priceEnabled = !this.priceEnabled;
+    if (!this.priceEnabled) {
+      this.displayedColumns = this.displayedColumns.filter(column => column !== 'customer-price');
+    } else {
+      this.displayedColumns = DISPLAYED_COLUMNS;
+    }
   }
 }
