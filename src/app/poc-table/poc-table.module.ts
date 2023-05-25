@@ -6,14 +6,17 @@ import {MatCheckboxModule} from "@angular/material/checkbox";
 import {MatInputModule} from "@angular/material/input";
 import {MatButtonModule} from "@angular/material/button";
 import {MatIconModule} from "@angular/material/icon";
+import {PocFlexTableComponent} from './poc-flex-table/poc-flex-table.component';
 
 
 @NgModule({
   declarations: [
-    PocTableComponent
+    PocTableComponent,
+    PocFlexTableComponent
   ],
   exports: [
-    PocTableComponent
+    PocTableComponent,
+    PocFlexTableComponent
   ],
   imports: [
     CommonModule,

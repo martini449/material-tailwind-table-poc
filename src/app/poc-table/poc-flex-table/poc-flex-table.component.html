@@ -1,0 +1,58 @@
+<mat-table [dataSource]="dataSource" class="w-full">
+
+  <ng-container matColumnDef="part-number">
+    <mat-header-cell *matHeaderCellDef>
+      Part number
+    </mat-header-cell>
+    <mat-cell *matCellDef="let element">
+      📷 {{element.partNumber}} </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="part-description">
+    <mat-header-cell *matHeaderCellDef>Part description</mat-header-cell>
+    <mat-cell class="text-ellipsis overflow-hidden whitespace-nowrap" *matCellDef="let element"> {{element.partDescription}} </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="quantity">
+    <mat-header-cell *matHeaderCellDef>Quantity</mat-header-cell>
+    <mat-cell *matCellDef="let element">
+      <button color="accent" mat-button (click)="decreaseQuantity(element.partNumber)">-</button>
+      <!-- @TODO we can pass a component name here and use componentFactory to create an instance and render it   -->
+      <input class="text-center w-10 bg-transparent" matInput type="number"
+             (change)="changeQuantity(element.partNumber, $any($event.target).value)" [value]="element.quantity">
+      <button color="accent" mat-button (click)="increaseQuantity(element.partNumber)">+</button>
+    </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="line-reference">
+    <mat-header-cell *matHeaderCellDef>Line reference</mat-header-cell>
+    <mat-cell *matCellDef="let element"> {{element.lineReference}} </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="customer-price">
+    <mat-header-cell *matHeaderCellDef>Customer price</mat-header-cell>
+    <mat-cell *matCellDef="let element"> {{element.customerPrice}} </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="select">
+    <mat-header-cell *matHeaderCellDef>
+    </mat-header-cell>
+    <mat-cell *matCellDef="let row">
+      <mat-checkbox (change)="toggleRowSelection(row)">
+      </mat-checkbox>
+    </mat-cell>
+  </ng-container>
+
+  <mat-header-row *matHeaderRowDef="displayedColumns" class="bg-slate-100"></mat-header-row>
+  <mat-row class="odd:bg-slate-50"
+           *matRowDef="let row; columns: displayedColumns;"></mat-row>
+</mat-table>
+
+<button mat-button (click)="togglePrice()">Toggle price</button><br/>
+
+<div class="text-center" *ngIf="selectedRows.length > 0">
+  Selected items:
+  <span *ngFor="let row of selectedRows">
+    {{row.partDescription}} x {{row.quantity}},
+  </span>
+</div>

@@ -1,23 +1,31 @@
-.mat-column-part-number {
-  width: 20%;
+td.mat-cell{
+  border-bottom-style: none;
 }
 
-.mat-column-part-description {
-  width: 30%;
+th.mat-header-cell{
+  border-bottom-style: none;
 }
 
-.mat-column-quantity {
-  width: 20%;
-}
-
-.mat-column-line-reference {
-  width: 20%;
-}
-
-.mat-column-customer-price {
-  width: 10%;
-}
-
-.mat-column-select {
-  width: 10%;
-}
+//.mat-column-part-number {
+//  max-width: 300px;
+//}
+//
+//.mat-column-part-description {
+//  width: 30%;
+//}
+//
+//.mat-column-quantity {
+//  width: 20%;
+//}
+//
+//.mat-column-line-reference {
+//  width: 20%;
+//}
+//
+//.mat-column-customer-price {
+//  width: 10%;
+//}
+//
+//.mat-column-select {
+//  width: 10%;
+//}
